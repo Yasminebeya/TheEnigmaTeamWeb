@@ -1,0 +1,38 @@
+publication_index:
+    path:     /
+    defaults: { _controller: "PIFrontBundle:Publication:index" }
+    methods:  GET
+
+publication_show:
+    path:     /{id}/show
+    defaults: { _controller: "PIFrontBundle:Publication:show" }
+    methods:  GET
+
+publication_new:
+    path:     /new
+    defaults: { _controller: "PIFrontBundle:Publication:new" }
+    methods:  [GET, POST]
+
+publication_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PIFrontBundle:Publication:edit" }
+    methods:  [GET, POST]
+
+publication_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PIFrontBundle:Publication:delete" }
+    methods:  DELETE
+
+jaime:
+    path:     /{id}/jaime
+    defaults: { _controller: "PIFrontBundle:Publication:jaime" }
+    methods: [GET,POST]
+
+recherche:
+    path:     /aff
+    defaults: { _controller: "PIFrontBundle:Publication:aff" }
+    methods:  GET
+
+
+
+

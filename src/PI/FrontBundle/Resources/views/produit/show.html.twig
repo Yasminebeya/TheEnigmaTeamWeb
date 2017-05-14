@@ -1,0 +1,53 @@
+{% extends 'PIFrontBundle:Back:indexBack.html.twig' %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table class="table table-bordered table-striped table-condensed">
+        <tbody>
+
+            <tr>
+                <th>Typeproduitt</th>
+                <td>{{ produit.typeproduit }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ produit.Libelle }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit.prix }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.description }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ produit.quantite }}</td>
+            </tr>
+            <tr>
+                <th>image </th>
+                <td> <img style="width: 300px ;height: 200px" src="{{ asset("uploads/produits/" ~ produit.path) }}"> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_index') }}" class="btn btn-primary ">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('produit_edit', { 'id': produit.id }) }}" class="btn btn-primary ">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger ">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+
+
+    <input type="button" value="Avoir un fichier Excel des produit" onclick="self.location='http://localhost:8080/projetPI/web/app_dev.php/excel'">
+{% endblock %}

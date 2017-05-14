@@ -1,0 +1,104 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+
+
+
+
+    <script src="{{ asset('frontOffice/js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{ asset('frontOffice/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('frontOffice/js/jquery.sticky-kit.min.js')}}"></script>
+    <script src="{{ asset('frontOffice/js/jquery.scrollbar.min.js')}}"></script>
+    <script src="{{ asset('frontOffice/js/script.js')}}"></script>
+    <script src="{{ asset('js/masonry.pkgd.min.js')}}"></script>
+
+    <div id="page-contents">
+        <div class="container">
+            <div class="row">
+
+    <div class="col-md-7">
+
+        <!-- Post Create Box
+        ================================================= -->
+        <div class="create-post">
+            <div class="row">
+                <div class="col-md-7 col-sm-7">
+
+
+
+                    <div class="form-group">
+
+
+                        <h1>Les évènements les plus participés</h1>
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-5">
+                    <div class="tools">
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- Post Create Box End -->
+
+        <!-- Media
+        ================================================= -->
+        {% for eve in evenements %}
+        <div class="media">
+
+
+                <div class="grid-item col-md-6 col-sm-6">
+                    <div class="media-grid">
+
+                        <div class="img-wrapper" data-toggle="modal" data-target=".modal-9">
+                      {#     <img name="{{ eve.id }}" src="{{ asset('')}}{{ vich_uploader_asset(eve,'imageFile') }}.jpg"  class="img-responsive post-image">
+#}
+                        </div>
+                        <div class="media-info">
+                            <div class="reaction">
+                                <a class="btn text-green"> {{ eve.datedebut|date('m/d/Y') }}</a>
+                                <a class="btn text-red"> {{ eve.datefin|date('m/d/Y') }}</a>
+                            </div>
+                            <div class="user-info">
+
+                                <div class="user">
+                                    <h6><a class="profile-link">{{ eve.categorie }}</a></h6>
+                                    <h6><a class="text-green" >{{ eve.nom }}</a></h6>
+                                    <h6><a class="text-red">{{ eve.pourcentage }}%</a></h6>
+                                </div>
+                            </div>
+                            <div class="line-divider"></div>
+                            <div class="user-info">
+                            <div>
+                                <td><a class="btn btn-primary btn-lg" href="{{ path('pi_front_infoEve',{'id':eve.id})}}">Consulter</a></td>
+                            </div>
+                            </div>
+
+                        </div>
+                        <!--Popup-->
+
+                    </div>
+
+
+                </div>
+            </div>
+{% endfor %}
+        <div class="line-divider"></div>
+        <td><a class="btn btn-default btn-lg" href="{{ path('pi_front_evenement') }}">Retourner à la liste des évènements</a></td>
+    </div>
+
+    <!-- Newsfeed Common Side Bar Right
+================================================= -->
+                <div class="col-md-2 static">
+                    <div class="suggestions" id="sticky-sidebar">
+                        <h4 class="grey"></h4>
+                        <div class="follow-user">
+                            <td><a   class="btn btn-success btn-lg" href=" {{ path('pi_front_ajoutEvent')}}">Ajouter un évènement</a></td>
+                            <div class="line-divider"></div>
+                            <td><a class="btn btn-default btn-lg" href="{{ path('pi_front_searchCat')}}">Rechercher un évènement</a></td>
+
+                        </div>
+                    </div>
+                </div>
+
+</div></div></div>
+{% endblock %}

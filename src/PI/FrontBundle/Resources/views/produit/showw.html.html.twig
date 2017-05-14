@@ -1,0 +1,37 @@
+{% extends 'PIFrontBundle:Front:index.html.twig' %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table>
+        <tbody>
+
+        <tr>
+            <th>Typeproduit</th>
+            <td>{{ produit.typeproduit }}</td>
+        </tr>
+        <tr>
+            <th>Libelle</th>
+            <td>{{ produit.Libelle }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ produit.prix }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ produit.description }}</td>
+        </tr>
+        <tr>
+            <th>Quantite</th>
+            <td>{{ produit.quantite }}</td>
+        </tr>
+        <tr>
+            <th>image </th>
+        <td> <img style="width: 250px ;height: 200px" src="{{ asset("uploads/produits/" ~ produit.path) }}"> </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+{% endblock %}

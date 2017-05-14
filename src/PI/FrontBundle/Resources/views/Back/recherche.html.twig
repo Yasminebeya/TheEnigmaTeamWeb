@@ -1,0 +1,81 @@
+{% extends "@PIFront/Back/indexBack.html.twig" %}
+{% block body %}
+
+  {{ form(form) }}
+</br>
+    </br>
+
+
+<div><h1>La Liste des congés: </h1></div>
+
+
+    <table class="table table-stripped ">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Date début</th>
+
+
+            <th>Type du congé</th>
+            <th>Etat:</th>
+            <th>  </th>
+            <th></th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for conge in conges %}
+            <tr>
+               <td>{{ conge.user }}</td>
+                <td>{% if conge.datedebut %}{{ conge.datedebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ conge.TypeConge }}</td>
+                <td>{{ conge.etat }}</td>
+
+
+                <td>
+
+                    <div>
+                        <a  class="btn btn-round btn-primary btn-lg" href="{{ path('conge_showB', { 'id': conge.id }) }}">  <i class="fa fa-eye"></i>  Plus de details
+
+                        </a>
+
+                    </div>
+
+
+
+                </td>
+                <td>
+
+                    <div>
+                        <a  class="btn btn-round btn-primary btn-lg btn-danger" href="{{ path('conge_deleteB', { 'id': conge.id }) }}">  <i class="fa fa-trash-o"></i>  Supprimer
+
+                        </a>
+
+                    </div>
+
+
+
+                </td>
+
+
+            </tr>
+
+        {% endfor %}
+        </tbody>
+
+    </table>
+    <ul>
+        <div class="fa-hover col-md-3 col-sm-4">
+            <a href="{{ path('conge_indexB') }}"> <i class=" fa fa-reply-all"></i>  Retourner à la liste des congés</a>
+
+        </div>
+    </ul>
+
+
+
+
+
+
+{% endblock %}

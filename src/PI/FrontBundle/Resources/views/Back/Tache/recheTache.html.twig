@@ -1,0 +1,78 @@
+{% extends "@PIFront/Back/indexBack.html.twig" %}
+
+{% block body %}
+
+
+
+
+    {{ form_start(form) }}
+
+    <div class="form-group">
+    <div class="row">
+    <div class="col-lg-12">
+    <section class="panel">
+    <header class="panel-heading">
+        <div>
+            <class>
+                <h1 class="first-city">Rendement des tâches </h1>
+            </class>
+        </div>
+        &nbsp;
+    </header>
+
+    <div class="form-group">
+    <form class="form-horizontal">
+    <br><br>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ form_label(form.user) }} </label>
+    <div class="col-sm-10">
+
+        {{ form_widget(form.user) }}
+    </div>
+    <br><br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-round btn-primary " value="Chercher" type="submit">
+
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Date début</th>
+                    <th>Date fin</th>
+                    <th>Description</th>
+                    <th>Etat</th>
+                    <th>Employé</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for tache in tache %}
+                    <tr>
+
+                        <td>{{ tache.datedebut|date("d/m/Y")}}</td>
+                        <td>{{ tache.datefin|date("d/m/Y") }}</td>
+                        <td>{{ tache.description }}</td>
+                        <td>{{ tache.etat }}</td>
+                        <td>{{ tache.user }}</td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+
+
+</table>
+            <div class="col-xs-6" style="text-align-last: end">
+                <div class="navigation" >
+                    {{ knp_pagination_render(tache) }}
+                </div>
+            </div>
+
+
+
+
+
+            {{ form_end(form) }}
+    </form>
+    </div>
+    </section>
+    <table>
+{% endblock %}

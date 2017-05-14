@@ -1,0 +1,54 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+<div>
+ <a  href="{{ path('panier') }}" class="btn btn-success col-lg-4 pull-right"> <i class="fa fa-shopping-cart"></i>  Mon panier personnel </a>
+    </div>
+    </br>
+    <h3>Liste des produit</h3>
+
+        {% for produit in produits %}
+
+{% if produit.quantite > 0 %}
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="row prd-row">
+                        <div class="col-md-6">
+                            <div class="prd-img">
+                                <img src="{{ asset("uploads/produits/" ~ produit.path) }}" alt="">
+                            </div>
+                            <div >
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h1>{{ produit.Libelle }}</h1>  <p class="normal">{{ produit.rating|rating }}</p>
+                            <p class="normal">{{ produit.description }}</p>
+                            <p class="terques">Qte : {{ produit.quantite }}</p>
+
+                            <div class="price">
+                                <div class="amnt"> {{ produit.prix }} $</div>
+
+                            </div>
+                        </div>
+
+                        <a   href="{{ path('produit_panier', { 'id': produit.id }) }}" class="btn btn-primary pull-right "> Ajouter au panier  <i class="fa fa-plus"></i></a>
+
+                        <a   href="{{ path('produit_louer', { 'id': produit.id }) }}" class="btn btn-success pull-right ">Louer</a>
+
+                    </div>
+                </div>
+            </section>
+
+
+{% endif %}
+
+        {% endfor %}
+
+
+
+
+
+     {% endblock %}

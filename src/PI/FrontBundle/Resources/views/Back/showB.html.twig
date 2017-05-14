@@ -1,0 +1,88 @@
+{% extends 'PIFrontBundle:Back:indexBack.html.twig' %}
+
+{% block body %}
+
+    <h1 xmlns="http://www.w3.org/1999/html">Information sur le congé </h1>
+
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <div class="panel-body">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id : </th>
+                <td>{{ conge.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom d'employé :</th>
+                <td>{{ congee.user}}</td>
+            </tr>
+            <tr>
+                <th>Datedebut :</th>
+                <td>{% if conge.datedebut %}{{ conge.datedebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+
+            <tr>
+                <th>Nbrjours :</th>
+                <td>{{ conge.nbrjours }}</td>
+            </tr>
+            <tr>
+                <th>Raison :</th>
+                <td>{{ conge.raison }}</td>
+            </tr>
+            <tr>
+                <th>Typeconge :</th>
+                <td>{{ conge.TypeConge }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <div class="fa-hover col-md-3 col-sm-4">
+            <a href="{{ path('conge_indexB') }}"> <i class=" fa fa-reply-all"></i>  Retourner à la liste des congés</a>
+
+        </div>
+        </ul>
+        </br>
+</br>
+        <td>
+<form method="post">
+
+                <input class="btn btn-primary btn-lg btn-block" type="submit" name="Valider" value="Accepter" />
+
+
+    </form>
+
+        </td>
+        </br>
+
+
+
+            <form method="post">
+                <input class="btn btn-danger btn-lg btn-block" type="submit" name="ref" value="refuser" />
+            </form>
+
+                </a>
+            </div>
+
+
+
+
+        </td>
+
+
+
+
+    </ul>
+
+            </section>
+                </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,189 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+
+
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div>
+                            <class>
+                                <h1>Modifier un évènement</h1>
+                            </class>
+                        </div>
+
+                    </header>
+                    <div class="panel-body">
+                        <br>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.categorie) }} </label>
+                            <div class="col-sm-10">
+                                <div class="input">{{  form_widget(form.categorie) }}</div>
+
+
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.nom) }} </label>
+                            <div class="col-sm-10">
+                                <div class="input">{{  form_widget(form.nom) }}</div>
+                            </div>
+                        </div>
+                        <br>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.nbrelimite) }} </label>
+                            <div class="col-sm-10">
+                                <div class="input">{{  form_widget(form.nbrelimite) }}</div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.datedebut) }} </label>
+                            <div class="col-sm-10">
+                                <div class="input">{{  form_widget(form.datedebut) }}</div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.datefin) }}</label>
+                            <div class="col-sm-10">
+                                <div class="input">{{  form_widget(form.datefin) }}</div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.description) }}</label>
+                            <div class="col-sm-10">
+                                <div class="input">{{  form_widget(form.description) }}</div>
+                            </div>
+                        </div>
+
+
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.lat) }} </label>
+                            <div class="col-sm-10">
+                                <div class="input">{{  form_widget(form.lat) }}</div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Longitude </label>
+                            <div class="col-sm-10">
+                                <div class="input">{{  form_widget(form.lon) }}</div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div id="map-canvas"></div>
+
+                        <style CSS>
+                            #map-canvas{
+                                height: 500px;
+                                width: 700px;
+                            }
+                        </style>
+                        <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                var map;
+                                var myCenter=new google.maps.LatLng(36.8977732, 10.1875682);
+                                var marker=new google.maps.Marker({
+                                    position:myCenter,
+                                    draggable:true
+                                });
+                                initialize()
+
+                                function initialize() {
+                                    var mapProp = {
+                                        disableDoubleClickZoom: true,
+                                        center:myCenter,
+                                        zoom: 14,
+                                        draggable: true,
+                                        scrollwheel: true,
+                                        mapTypeId:google.maps.MapTypeId.ROADMAP
+                                    };
+                                    map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+                                    marker.setMap(map);
+                                    google.maps.event.addListener(marker, 'click', function() {
+
+                                        markerLocation();
+
+                                    });
+                                    google.maps.event.addListener(marker, 'dragend', function(a) {
+                                        console.log(a);
+                                        document.getElementById("lat").value = a.latLng.lat().toFixed(4);
+                                        document.getElementById("lon").value=  a.latLng.lng().toFixed(4);
+                                    });
+                                    google.maps.event.addListener(map, 'dblclick', function(event) {
+                                        //Get the location that the user clicked.
+                                        var clickedLocation = event.latLng;
+                                        //If the marker hasn't been added.
+                                        markerLocation();
+                                        if(marker === false){
+                                            //Create the marker.
+                                            marker = new google.maps.Marker({
+                                                position: clickedLocation,
+                                                map: map
+                                            });
+                                            //Listen for drag events!
+
+                                        } else{
+                                            //Marker has already been added, so just change its location.
+
+                                            marker.setPosition(clickedLocation);
+
+                                        }
+                                        //Get the marker's location.
+
+                                        markerLocation();
+                                    });
+                                }
+
+                                function markerLocation(){
+                                    //Get location.
+                                    var currentLocation = marker.getPosition();
+                                    //Add lat and lng values to a field that we can save.
+                                    document.getElementById("lat").value = currentLocation.lat(); //latitude
+                                    document.getElementById("lon").value = currentLocation.lng(); //longitude
+                                }
+
+                                function resizingMap() {
+                                    if(typeof map =="undefined") return;
+                                    var center = map.getCenter();
+                                    google.maps.event.trigger(map, "resize");
+                                    map.setCenter(center);
+
+                                }
+                            });
+                        </script>
+                        <br><br>
+                        {{ form_end(form) }}
+
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+{% endblock %}

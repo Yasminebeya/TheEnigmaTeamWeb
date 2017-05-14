@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from thunder-team.com/friend-finder/newsfeed.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Jan 2017 21:26:28 GMT -->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="This is social network html5 template available in themeforest......" />
+    <meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
+    <meta name="robots" content="index, follow" />
+    <title>SocialPro</title>
+
+    <!-- Stylesheets
+    ================================================= -->
+
+    !--Core CSS -->
+    <link href="{{ asset('backOffice/bs3/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backOffice/js/jquery-ui/jquery-ui-1.10.1.custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backOffice/css/bootstrap-reset.css') }}" rel="stylesheet">
+    <link href="{{ asset('backOffice/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('backOffice/js/jvector-map/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
+    <link href="{{ asset('backOffice/css/clndr.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    <script src="{{ asset('frontOffice/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+    <link href="{{ asset('backOffice/js/css3clock/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('frontOffice/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontOffice/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontOffice/css/ionicons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontOffice/css/font-awesome.min.css') }}" />
+    <link href="{{ asset('backOffice/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('backOffice/css/style-responsive.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('frontOffice/css/emoji.css') }}" rel="stylesheet">
+    <!--Google Webfont-->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700' rel='stylesheet' type='text/css'>
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/png" href="{{ asset('frontOffice/images/fav.png') }}"/>
+</head>
+<body>
+
+
+<!-- Header
+================================================= -->
+<header id="header">
+    <nav class="navbar navbar-default navbar-fixed-top menu">
+        <div class="container">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="{{ asset('frontOffice/images/1.png') }}" alt="logo" /></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right main-menu">
+
+                    <li class="dropdown"><a href="{{ path('pi_front_message_convocation') }}">Messages</a></li>
+                    <li class="dropdown"><a href="{{ path('pi_front_profil') }}">Profil</a></li>
+                    <li class="dropdown"><a href="{{ path('pi_front_login') }}">Deconnexion</a></li>
+                </ul>
+                <form class="navbar-form navbar-right hidden-sm" method="post" action="{{ path('recherche') }}">
+                    <div class="form-group">
+                        <i class="icon ion-android-search"></i>
+                        <input type="text" class="form-control" placeholder="Search  " name="word">
+                    </div>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+</header>
+<!--Header End-->
+
+<div id="page-contents">
+    <div class="container">
+        <div class="row">
+
+            <!-- Newsfeed Common Side Bar Left
+            ================================================= -->
+            <div class="col-md-3 static">
+                <div class="profile-card">
+                    <img src="{{ asset('frontOffice/images/users/user0.jpg') }}" alt="user" class="profile-photo" />
+                    <h5><a href="{{ path('pi_front_profil') }}" class="text-white">
+{{ app.user.username }}
+                        </a></h5>
+
+                </div><!--profile card ends-->
+                <ul class="nav-news-feed">
+
+                    <li><i class="icon ion-ios-paper"></i><div><a href="{{ path('publication_index') }}"> Actualités</a></div></li>
+                    <li><i class="icon ion-ios-people"></i><div><a href="{{ path('pi_front_tache')}}">Taches</a></div></li>
+                    <li><i class="icon ion-ios-people-outline"></i><div><a href="{{ path('pi_front_evenement')}}">Evenement</a></div></li>
+                    <li><i class="icon ion-chatboxes"></i><div><a href="{{ path('produit_indexx')}}">Vente/Location</a></div></li>
+                    <li><i class="icon ion-images"></i><div><a href="{{ path('conge_new')}}">congés</a></div></li>
+                    <li><i class="icon ion-ios-videocam"></i><div><a href="{{ path('pi_front_forum')}}">Forum</a></div></li>
+                </ul><!--news-feed links ends-->
+
+            </div>
+            <div class="col-md-7">
+
+
+                {% block body %}
+                {% endblock %}
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer
+    ================================================= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-wrapper">
+                    <div class="col-md-3 col-sm-3">
+                        <a href="#"><img src="{{ asset('frontOffice/images/1.png') }}" alt="" class="footer-logo" /></a>
+                        <ul class="list-inline social-icons">
+                            <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
+                            <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
+                            <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <h6>Pour les employers</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">s'incrire</a></li>
+                            <li><a href="#">se conecter</a></li>
+                            <li><a href="#">Explorer</a></li>
+                            <li><a href="#">Fonctionnalités  </a></li>
+
+                            <li><a href="#">Parametre de language</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <h6>Pour les chefs de projets</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">Business signup</a></li>
+                            <li><a href="#">Business login</a></li>
+                            <li><a href="#">Benefits</a></li>
+                            <li><a href="#">Resources</a></li>
+                            <li><a href="#">Advertise</a></li>
+                            <li><a href="#">se connecter/a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-sm-2">
+                        <h6>About</h6>
+                        <ul class="footer-links">
+                            <li><a href="#">Informations</a></li>
+                            <li><a href="#">Nous contacter</a></li>
+                            <li><a href="#">Nos buts</a></li>
+                            <li><a href="#">Nos offres</a></li>
+                            <li><a href="#">Aides</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <h6>Nous contacter</h6>
+                        <ul class="contact">
+                            <li><i class="icon ion-ios-telephone-outline"></i>(+216)54451152</li>
+                            <li><i class="icon ion-ios-email-outline"></i>info@SocialPro-team.com</li>
+                            <li><i class="icon ion-ios-location-outline"></i>12 cité des Oranges-Sousse</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>SocialPro Team © 2016. All rights reserved</p>
+        </div>
+    </footer>
+
+    <!--preloader-->
+    <div id="spinner-wrapper">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts
+    ================================================= -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTMXfmDn0VlqWIyoOxK8997L-amWbUPiQ&amp;callback=initMap"></script>
+    <script src="{{ asset('frontOffice/js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('frontOffice/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontOffice/js/jquery.sticky-kit.min.js') }}"></script>
+    <script src="{{ asset('frontOffice/js/jquery.scrollbar.min.js') }}"></script>
+    <script src="{{ asset('frontOffice/js/script.js') }}"></script>
+</body>
+
+<!-- Mirrored from thunder-team.com/friend-finder/newsfeed.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Jan 2017 21:28:33 GMT -->
+</html>

@@ -1,0 +1,67 @@
+{% extends 'PIFrontBundle:Front:index.html.twig' %}
+
+{% block body %}
+
+
+    <div xmlns="http://www.w3.org/1999/html">
+        <class>
+            <h1 class="">Liste des congés</h1>
+        </class>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+
+                    <div class="panel-body">
+
+        {% for conge in conges %}
+                        {% if app.user ==conge.user %}
+                        <div class="col-md-4" >
+                            <div class="thumbnail"  style="background-color: #F1EFF2">
+                                <label>nom :</label> {{ conge.user }} </br>
+                                <label>Date debut :</label>  {% if conge.datedebut %}{{ conge.datedebut|date('Y-m-d') }}{% endif %}<br>
+                                <label>Nombre de jours :</label> {{ conge.nbrjours }}<br>
+                                <label>Type du conge:</label>   {{ conge.typeConge }}<br>
+                                <label>Raison:</label>   {{ conge.raison }}<br>
+
+</br>
+                                <div align="center">
+                                    <a href="{{ path('conge_show',{'id': conge.id}) }}" >
+                                        <button class="btn btn-round btn-primary" >Plus de details</button></a>
+                                </div>
+</br>
+
+                                <div align="center">
+                     <a class="btn btn-round btn-primary " href="{{ path('conge_edit', { 'id': conge.id }) }}"> Modifier congé
+
+                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+{% endif %}
+
+        {% endfor %}
+
+            </div>
+
+                    <h5>******Le  <strong>totale</strong> de nombre de jours des congés est <strong> {{  somme }}  </strong> *****</h5>
+
+
+            </section>
+
+        </div>
+    </div>
+    </div>
+
+    </form>
+
+
+
+    <ul>
+        <li>
+            <a style="font-size: 20px; font-family: bold;" href="{{ path('conge_new') }}">Ajouter un congé</a>
+        </li>
+    </ul>
+{% endblock %}

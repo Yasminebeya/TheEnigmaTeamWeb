@@ -1,0 +1,54 @@
+{% extends "@PIFront/Back/indexBack.html.twig" %}
+
+{% block body %}
+    {{ form_start(f) }}
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div>
+                            <class>
+                                <h1 class="first-city">Modifier une tâche</h1>
+                            </class>
+                        </div>
+
+                    </header>
+
+                    <div class="panel-body">
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(f.datedebut) }} </label>
+                            <div class="col-sm-10">{{ form_widget(f.datedebut) }}</div>
+                    </div>
+                        <br>
+                        <div class="form-group" >
+                            <label class="col-sm-2 control-label">{{ form_label(f.datefin) }} </label>
+                            <div class="col-sm-10">{{ form_widget(f.datefin) }}</div>
+                        </div>
+                    <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(f.Description) }} </label>
+                            <div class="col-sm-10">
+                               <div class="input">{{  form_widget(f.Description,{'atr':{'placeholder':'Date'}}) }}</div>
+
+
+                          </div>
+                        </div>
+
+
+
+                    </div>
+                    &nbsp;&nbsp;&nbsp;    <input a href="{{ path('pi_back_liste_taches') }}" class="btn btn-round btn-primary" value="Mettre à jour" type="submit">
+                    <a href="{{ path('pi_back_liste_taches') }}" class="btn btn-round btn-danger">Annuler</a>
+
+       {{ form_end(f) }}
+                </section>
+            </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

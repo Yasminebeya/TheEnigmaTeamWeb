@@ -1,0 +1,150 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+
+    {% block body %}
+
+        <script src="{{ asset('frontOffice/js/jquery-3.1.1.min.js')}}"></script>
+        <script src="{{ asset('frontOffice/js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('frontOffice/js/jquery.sticky-kit.min.js')}}"></script>
+        <script src="{{ asset('frontOffice/js/jquery.scrollbar.min.js')}}"></script>
+        <script src="{{ asset('frontOffice/js/script.js')}}"></script>
+
+
+        <div id="page-contents">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-7">
+
+
+                        <!-- Post Create Box
+                    ================================================= -->
+                        <div class="create-post">
+                            <div class="row">
+                                <div class="col-md-7 col-sm-7">
+                                    <div class="form-group">
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-sm-5">
+                                    <div class="tools">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Post Create Box End-->
+
+                        <!-- Post Content
+                        ================================================= -->
+                        <div class="post-content">
+                       {#     <img name="{{ e.id }}" src="{{ asset('')}}{{ vich_uploader_asset(e,'imageFile') }}.jpg"  class="img-responsive post-image">
+                       #}    <div class="post-container">
+
+                                <div class="post-detail">
+                                    <div class="user-info">
+                                        <h4><a href="timeline.html" class="profile-link"> </a> {{ e.categorie }} : {{ e.nom }}</h4>
+                                        <p class="text-muted">Ajouté par : {{ e.user }}</p>
+
+                                    </div>
+                                    <div class="reaction">
+                                        <a class="btn text-green"> {{ e.datedebut|date('m/d/Y')}}</a>
+                                        <a class="btn text-red"> {{ e.datefin|date('m/d/Y')}}</a>
+                                    </div>
+
+
+                                    <div class="line-divider"></div>
+                                    <div class="post-text">
+                                        <h2 class="following"> </h2>
+                                        <h4 class="grey">{{ e.description }} <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></h4>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content">
+
+
+                            <style>
+                                #map_canvas{
+                                    height: 500px;
+                                    width: 590px;
+                                }
+                            </style>
+                            <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+                            <script>
+                                $(document).ready(function()
+                                {
+                                    var map;
+                                    var myCenter = new google.maps.LatLng({{ e.Lat }}, {{ e.Lon }});
+                                    var marker = new google.maps.Marker({
+                                        position: myCenter
+                                    });
+
+                                    function initialize() {
+                                        var map_canvas = document.getElementById('map_canvas');
+                                        var map_options = {
+                                            center: new google.maps.LatLng({{ e.Lat }}, {{ e.Lon }}),
+                                            zoom: 8,
+                                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                                        };
+
+                                        map = new google.maps.Map(document.getElementById('map_canvas'), map_options);
+                                        marker.setMap(map);
+
+                                    }
+
+                                    google.maps.event.addDomListener(window, "load", initialize);
+                                });
+                            </script>
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe2K7vDbnaZvYUzofrKcSVldmzRCB-EzE"
+                                    async defer></script>
+                            <div id="map_canvas"></div>
+
+
+
+                        </div>
+
+                        <div class="post-content">
+                            <div class="post-comment">
+
+                        {#       {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': e.id} %}
+#}
+                            </div>
+                        </div>
+                        {% if e.user==iduser %}
+                            <td><a  class="btn btn-warning btn-lg" href="{{ path('pi_front_modifEvent',{'id':e.id}) }}">Modifier</a></td>
+                            <td><a  class="btn btn-danger btn-lg" href="{{ path('pi_front_SuppEve',{'id':e.id}) }}">Supprimer</a></td>
+                        {% endif %}
+
+                        <td><a  class="btn btn-default btn-lg" href="{{ path('pi_front_evenement') }}">Retourner</a></td>
+                    </div>
+
+                    <div class="col-md-2 static">
+                        <div class="suggestions" id="sticky-sidebar">
+                            <h4 class="grey">Nombre max des participants: {{ e.nbrelimite }}</h4>
+                            <div class="follow-user">
+                                <td><a   class="btn btn-success btn-lg" href="{{ path('pi_front_nbrlimite',{'id':e.id}) }}">Ne plus participer</a></td>
+                                <div class="line-divider"></div>
+                                <td><a   class="btn btn-info btn-lg" href="{{ path('pi_front_participants',{'idEvent':e.id}) }}">Liste des participants</a></td>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+        </div></div>
+
+
+
+{% endblock %}

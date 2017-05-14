@@ -1,0 +1,42 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+
+
+<br><br><br>
+    <div >
+        <a href="{{ path('publication_new') }}"><h4 style="text-decoration: solid;color: cadetblue">Partager une actualité avec vos collegues ...</h4></a>
+    </div> <br><br>
+    {% for publication in publications %}
+
+        <div class="post-content" >
+
+            <table>
+                <tr><td width="50%"><h3 style="color:#122b40">{{ publication.text }}</h3><br>
+
+                        {% if publication.path != null %}
+                            <img style="width: 400px;height: 200px; margin-bottom: 10%" src="{{ asset("uploads/publications/" ~ publication.path)}}"  >
+                        {% endif %}
+                        <h4 style="color:#2A3542"> Publier le : {{ publication.date|date("m/d/Y") }} | Par : <u> {{ publication.user }} </u></h4><br>
+                        <div class="reaction">
+                            <a  href="{{path('jaime', { 'id': publication.id })}}"class="btn text-green"><i class="icon ion-thumbsup"></i> {{ publication.jaime }}</a>
+                            <a  href="{{path('jaimepas', { 'id': publication.id })}}" class="btn text-red"><i class="fa fa-thumbs-down"></i>{{  publication.jaimepas }}</a>
+                        </div></td>
+
+                    <td width="10%">
+                        <ul><br><br>
+                            <a class="btn btn-round btn-default" style="width: 80%" href={{ path('convert',{'id':publication.id}) }}>PDF</a><br><br>
+                            {% if  app.user==publication.user  %}
+                                <a class="btn btn-round btn-info" style="width: 80%" href="{{ path('publication_edit', { 'id': publication.id }) }}">Modifier</a><br><br>
+                                <a class="btn btn-round btn-danger" style="width: 80%" href="{{ path('supp', { 'id': publication.id }) }}">Supprimer</a><br><br><br>
+                            {% endif %}
+                        </ul></td></tr>
+            </table>
+        </div>
+
+    {% endfor %}
+
+
+
+
+{% endblock %}

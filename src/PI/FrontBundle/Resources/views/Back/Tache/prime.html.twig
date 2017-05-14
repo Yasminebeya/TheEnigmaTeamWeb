@@ -1,0 +1,53 @@
+{% extends "@PIFront/Back/indexBack.html.twig" %}
+
+{% block body %}
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div>
+                            <class>
+                                <h1 class="first-city">Affecter un prime </h1>
+                            </class>
+                        </div>
+
+                    </header>
+                    <div class="panel-body">
+                        <form method="POST" class="form-horizontal">
+
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Objet</label>
+                                <div class="col-sm-10">
+                                    <input type="text" placeholder="" name="objet" class="form-control" value="prime" disabled>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Text</label>
+                                <div class="col-md-10">
+                                    <textarea class="wysihtml5 form-control" name="text" rows="9" required></textarea>
+
+                                </div>
+                            </div>
+
+                            <button class="btn btn-round btn-primary" type="submit" value="ajouter">Affecter</button>
+
+                            <a href="{{ path('pi_back_recherche_etat') }}" class="btn btn-round btn-danger">Annuler</a>
+                            <br><br>
+                            <div>
+                                <label> NB : Le prime ne sera affécter que si l'employé a afféctuer 80% de ces tâches dans les dates
+                                    limites </label>
+                            </div>
+
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+{% set counter = 0 %}
+{% set somme = 0 %}
+    <div class="container">
+
+        <h1> votre panier </h1>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <div class="panel-body">
+
+                            <table class="table table-stripped ">
+                                <thead>
+                                <tr>
+                                    <th>Nom article</th>
+                                    <th>Prix article</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for p in panier %}
+                                    {% set counter = counter + 1 %}
+                                {% set x = p.getProduit().getPrix() %}
+                                    {% set somme = somme + x %}
+                                <tr>
+
+                                    <td id="ide" value='{{ p.getId() }}'>{{ p.getProduit().getLibelle() }}</td>
+                                    <td>{{ p.getProduit().getPrix() }}</td>
+
+
+                                    <td>
+
+
+
+
+
+
+
+
+                                    </td>
+
+                                </tr>
+
+                                {% endfor %}
+                                </tbody>
+
+                            </table>
+                            <div class="fa-align-left">
+                           <h5 >vous avez  <strong>{{ counter }} </strong>   produit dans votre panier</h5>
+                                <h5 > La somme du votre panier : <strong>{{ somme }} </strong> Dt   </h5>
+
+                                <form method="post">
+                                <input class="btn btn-danger" type="submit" name="valider" value="Valider Panier"/>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

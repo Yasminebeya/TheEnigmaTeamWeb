@@ -1,0 +1,74 @@
+{% extends "@PIFront/Back/indexBack.html.twig" %}
+
+{% block body %}
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div>
+                            <class>
+                                <h1 class="first-city">Les évènements ajoutés par les employés</h1>
+                            </class>
+                        </div>
+
+                    </header>
+
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+
+                                <th>Catégorie</th>
+                                <th>Nom évènement</th>
+                                <th>Date début</th>
+                                <th>Date fin</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+
+                            {% for eve in evenements %}
+                                {% if app.user!=eve.user %}
+                            <tr>
+
+                                <td>{{ eve.categorie}}</td>
+                                <td>{{ eve.nom }}</td>
+                                <td>{{ eve.datedebut|date("d/m/Y") }}</td>
+                                <td>{{ eve.datefin|date("d/m/Y") }}</td>
+<td>
+
+    <form method="post">
+
+        <input class="btn btn-primary btn-lg btn-block" type="submit" name="Accepter" value="Accepter" />
+
+
+    </form>
+<td/>
+                                <td>
+
+    <form method="post">
+
+        <input class="btn btn-danger btn-lg btn-block" type="submit" name="Reffuser" value="Reffuser" />
+
+
+    </form>
+</td>
+                            </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+
+{% endblock %}

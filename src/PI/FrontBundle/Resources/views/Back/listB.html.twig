@@ -1,0 +1,59 @@
+{% extends "@PIFront/Back/indexBack.html.twig" %}
+
+{% block body %}
+    <h1 class="first-city">Liste des Employés en congé </h1>
+    <div class="form-group">
+    <div class="row">
+    <div class="col-lg-12">
+    <section class="panel">
+    <div class="panel-body">
+
+    <table class="table table-stripped ">
+        <thead>
+        <tr>
+            <th>Nom de l'employé</th>
+            <th> Type </th>
+            <th>Nombre de jours</th>
+            <th>Etat</th>
+
+
+            <th></th>
+
+
+        </tr>
+        </thead>
+
+
+        {% for conge in conge %}
+            <tr>
+
+                <td> {{ conge.user}}</td>
+                <td> {{ conge.typeConge }}</td>
+                <td>{{ conge.nbrjours }}</td>
+                <td> {{ conge.etat }}</td>
+                <td><div>
+                        <a  class="btn btn-round btn-primary btn-lg" href="{{ path('conge_showLB', { 'id': conge.id }) }}">  <i class="fa fa-eye"></i>  Plus de details
+
+                        </a>
+
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+
+    </table>
+        <ul>
+            <div class="fa-hover col-md-3 col-sm-4">
+                <a href="{{ path('conge_indexB') }}"> <i class=" fa fa-reply-all"></i>  Retourner à la liste des congés</a>
+
+            </div>
+        </ul>
+    </div>
+    </section>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,311 @@
+pi_front_conge:
+    resource: "@PIFrontBundle/Resources/config/routing/conge.yml"
+    prefix:   front/conge
+pi_front_publication:
+    resource: "@PIFrontBundle/Resources/config/routing/publication.yml"
+    prefix:  /publication
+
+pi_front_homepage:
+    path:     /front
+    defaults: { _controller: PIFrontBundle:Front:indexFront }
+pi_back_homepage:
+    path:     /back
+    defaults: { _controller: PIFrontBundle:Back:indexBack }
+
+pi_front_act:
+    path:     /actualite
+    defaults: { _controller: PIFrontBundle:Front:actualite }
+
+
+pi_front_vente:
+    path:     /vente
+    defaults: { _controller: PIFrontBundle:Front:ventelocation }
+
+pi_front_conge:
+    path:     /conge
+    defaults: { _controller: PIFrontBundle:Front:conge }
+
+
+pi_front_forum:
+    path:     /forum
+    defaults: { _controller: PIFrontBundle:Front:forum }
+
+
+pi_front_msg:
+    path:     /messages
+    defaults: { _controller: PIFrontBundle:Front:messages }
+
+pi_front_profil:
+    path:     /profil
+    defaults: { _controller: PIFrontBundle:Front:profil }
+
+pi_front_login:
+    path:     /log
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+pi_front_ajouter_conge:
+    path:     /AjouterConge
+    defaults: { _controller: PIFrontBundle:Front:ajouterConge }
+
+conge_indexB:
+    path:     /
+    defaults: { _controller: PIFrontBundle:Conge:indexB }
+
+
+conge_showB:
+    path:     /{id}/showB
+    defaults: { _controller: PIFrontBundle:Conge:showB }
+
+conge_showLB:
+    path:     /{id}/showLB
+    defaults: { _controller: PIFrontBundle:Conge:showLB }
+
+
+
+conge_deleteB:
+    path:     /{id}/deleteB
+    defaults: { _controller: PIFrontBundle:Conge:deleteB }
+
+
+
+_grapheChartLine:
+    path:     /ChartLine
+    defaults: { _controller: PIFrontBundle:Graphe:chartLine}
+
+
+conge_ListB:
+    path:     /ListB
+    defaults: { _controller: PIFrontBundle:Conge:ListB }
+
+
+
+conge_Accepter:
+    path:     /accepter
+    defaults: { _controller: PIFrontBundle:Conge:accepterConge }
+
+conge_Refuser:
+    path:     /refuser
+    defaults: { _controller: PIFrontBundle:Conge:refuserConge }
+
+conge_RechercheDate:
+    path:     /rechercheD
+    defaults: { _controller: PIFrontBundle:Conge:recherche }
+
+conge_RechercheDateF:
+    path:     /rechercheD
+    defaults: { _controller: PIFrontBundle:Conge:rechercheF }
+
+conge_RechercheType:
+    path:     /rechercheT
+    defaults: { _controller: PIFrontBundle:Conge:recherche1 }
+
+pi_back_ajouter_tache:
+    path:     /ajouterTache
+    defaults: { _controller: PIFrontBundle:Tache:ajouterTache }
+pi_back_liste_taches:
+    path:     /listeTache
+    defaults: { _controller: PIFrontBundle:Tache:listeTache }
+pi_back_liste_taches_non_affecte:
+    path:     /listeTachenonaffecte
+    defaults: { _controller: PIFrontBundle:Tache:listeTachenonaffecte }
+pi_back_affecter_taches:
+    path:     /affectertache/{id}
+    defaults: { _controller: PIFrontBundle:Tache:affecterTache }
+pi_back_update_taches:
+    path:     /updateTache/{id}
+    defaults: { _controller: PIFrontBundle:Tache:updateTache }
+pi_back_supprimer_taches:
+    path:     /supprimerTache/{id}
+    defaults: { _controller: PIFrontBundle:Tache:supprimerTache }
+
+
+
+pi_front_supprimer_convocation:
+    path:     /supprimerConvocation/{id}
+    defaults: { _controller: PIFrontBundle:Tache:supprimerConvocation }
+pi_front_tache:
+    path:     /front/tache
+    defaults: { _controller: PIFrontBundle:Tache:tache }
+pi_front_tache_modifier_etat:
+    path:     /front/modifieretat/{id}
+    defaults: { _controller: PIFrontBundle:Tache:modifieretattache }
+pi_front_mail:
+    path:     /mail
+    defaults: { _controller: PIFrontBundle:Tache:mail }
+pi_front_accuse_mail:
+    path:     /sucess
+    defaults: { _controller: PIFrontBundle:Tache:success }
+pi_back_convocation:
+    path:     /back/convocation/{id}
+    defaults: { _controller: PIFrontBundle:Tache:convocation }
+pi_front_message_convocation:
+    path:     /front/convocation
+    defaults: { _controller: PIFrontBundle:Tache:convocationfront }
+pi_back_prime:
+    path:     /back/prime
+    defaults: { _controller: PIFrontBundle:Tache:prime }
+pi_back_prime:
+    path:     /back/prime
+    defaults: { _controller: PIFrontBundle:Tache:prime }
+
+produit_panier:
+    path:     /addPanier/{id}
+    defaults: { _controller: PIFrontBundle:Produit:Addtopanier }
+
+panier:
+    path:     /panier
+    defaults: { _controller: PIFrontBundle:Produit:panier }
+
+recherche:
+    path:     /recherche
+    defaults: { _controller: PIFrontBundle:Produit:Recherche }
+
+exel:
+    path:     /exel
+    defaults: { _controller: PIFrontBundle:Produit:exel }
+produit_indexx:
+    path:     /show
+    defaults: { _controller: "PIFrontBundle:Produit:indexx" }
+produit_louer:
+    path:     /louer/{id}
+    defaults: { _controller: PIFrontBundle:Produit:Louer }
+
+pi_front_produit:
+    resource: "@PIFrontBundle/Resources/config/routing/produit.yml"
+    prefix:   back/produit
+
+
+jaime:
+    path:     /publication/{id}/jaime
+    defaults: { _controller: PIFrontBundle:Publication:jaime }
+    methods: [GET,POST]
+
+jaimepas:
+    path:     /publication/{id}/jaimepas
+    defaults: { _controller: PIFrontBundle:Publication:jaimepas }
+    methods: [GET,POST]
+
+recherche:
+    path:     /publication/recherche
+    defaults: { _controller: PIFrontBundle:Publication:recherche }
+    methods: [GET,POST]
+
+supp:
+    path:     /publication/{id}/supp
+    defaults: { _controller: PIFrontBundle:Publication:supp }
+    methods: [GET,POST]
+
+affback:
+    path:     /affback
+    defaults: { _controller: PIFrontBundle:Publication:affback }
+    methods: [GET,POST]
+
+suppback:
+    path:     /affback/{id}/suppback
+    defaults: { _controller: PIFrontBundle:Publication:suppback }
+    methods: [GET,POST]
+
+convert:
+    path:     /convert/{id}
+    defaults: { _controller: PIFrontBundle:Publication:convert }
+    methods: [GET,POST]
+
+liste:
+    path:     /liste
+    defaults: { _controller: PIFrontBundle:Publication:liste }
+    methods: [GET,POST]
+
+profil1:
+    path:     /publication/profil
+    defaults: { _controller: PIFrontBundle:Front:profil1 }
+    methods: [GET,POST]
+
+
+
+
+
+pi_back_recherche_etat:
+    path:     /back/consulterRendement
+    defaults: { _controller: PIFrontBundle:Tache:consulterRendement }
+
+
+pi_back_ajoutEve:
+    path:     /ajoutEve
+    defaults: { _controller: PIFrontBundle:Back:ajoutEve }
+
+pi_back_listeEve:
+    path:     /listeEve
+    defaults: { _controller: PIFrontBundle:Back:listeEve }
+
+pi_back_infoEve:
+    path:     /infoEve/{id}
+    defaults: { _controller: PIFrontBundle:Back:infoEve }
+
+pi_back_searchEvent:
+    path:     /rechercheCatDQL
+    defaults: { _controller: PIFrontBundle:Back:rechercheCatDQL }
+
+pi_back_part:
+    path:     /part/{idEvent}
+    defaults: { _controller: PIFrontBundle:Back:listeParticipants }
+
+pi_back_events:
+    path:     /events
+    defaults: { _controller: PIFrontBundle:Back:pourcentage }
+
+pi_front_bestEvents:
+    path:     /bestEvent
+    defaults: { _controller: PIFrontBundle:Front:pourcentage }
+
+pi_front_participants:
+    path:     /participants/{idEvent}
+    defaults: { _controller: PIFrontBundle:Front:listeParticipants }
+
+pi_front_searchCat:
+    path:     /searchCatDQL
+    defaults: { _controller: PIFrontBundle:Front:rechercheCat }
+
+pi_back_SuppEve:
+    path:     /SuppEve/{id}
+    defaults: { _controller: PIFrontBundle:Back:SuppEve }
+
+pi_back_modifEve:
+    path:     /modifEve/{id}
+    defaults: { _controller: PIFrontBundle:Back:modifEve }
+
+pi_front_evenement:
+    path:     /evenement
+    defaults: { _controller: PIFrontBundle:Front:listeEve }
+
+pi_front_ajoutEvent:
+    path:     /ajoutEvent
+    defaults: { _controller: PIFrontBundle:Front:ajoutEve }
+
+pi_front_myEvents:
+    path:     /myEvents
+    defaults: { _controller: PIFrontBundle:Front:myEvents}
+
+pi_front_modifEvent:
+    path:     /modifEvent/{id}
+    defaults: { _controller: PIFrontBundle:Front:modifEve }
+
+pi_front_SuppEve:
+    path:     /SupEve/{id}
+    defaults: { _controller: PIFrontBundle:Front:SuppEve }
+
+pi_front_comment:
+    path:     /comment/{id}
+    defaults: { _controller: PIFrontBundle:Front:comment }
+
+pi_front_infoEve:
+    path:     /infEve/{id}
+    defaults: { _controller: PIFrontBundle:Front:infoEve }
+
+pi_front_participe:
+    path:     /nbrlimite/{id}
+    defaults: { _controller: PIFrontBundle:Front:nbrlimite }
+
+pi_front_nbrlimite:
+    path:     /nbrlimite2/{id}
+    defaults: { _controller: PIFrontBundle:Front:nbrlimite2 }
+

@@ -1,0 +1,206 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+
+    <section class="panel">
+        <header class="panel-heading">
+
+        </header>
+
+
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-8">
+                    <section class="panel">
+                        <header class="panel-heading">
+
+                        </header>
+
+
+                        <div class="panel-body">
+                            <form method="POST" class="form-horizontal" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Catégorie</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" placeholder="" name="categorie" class="form-control" required>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nom</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" placeholder="" name="nom" class="form-control" required>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nombre limite </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" placeholder="" name="nbrelimite" class="form-control" required>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Date debut</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" placeholder="" name="datedebut" class="form-control" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Date fin</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" placeholder="" name="datefin" class="form-control" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Lieu</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" placeholder="" name="nom" class="form-control" required>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Description</label>
+                                    <div class="col-md-10">
+                                        <textarea class="wysihtml5 form-control" name="description" rows="9"></textarea>
+
+                                    </div>
+                                </div>
+
+
+                                <!--      <div id="map-canvas"></div>
+                                              <br>
+                                              <div class="form-group">
+                                                  <label class="col-sm-2 control-label">Lattitude</label>
+                                                  <div class="col-sm-10">
+                                                      <input type="text" placeholder="" id="lat" name="lat" class="form-control" required>
+
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label class="col-sm-2 control-label">Longitude</label>
+                                                  <div class="col-sm-10">
+                                                      <input type="text" placeholder="" id="lon" name="lon" class="form-control" required>
+
+                                                  </div>
+                                              </div>
+
+                                              <style CSS>
+                                                  #map-canvas{
+                                                      height: 500px;
+                                                      width: 700px;
+                                                  }
+                                              </style>
+                                              <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+                                              <script type="text/javascript">
+                                                  $(document).ready(function() {
+                                                      var map;
+                                                      var myCenter=new google.maps.LatLng(36.8977732, 10.1875682);
+                                                      var marker=new google.maps.Marker({
+                                                          position:myCenter,
+                                                          draggable:true
+                                                      });
+                                                      initialize()
+
+                                                      function initialize() {
+                                                          var mapProp = {
+                                                              disableDoubleClickZoom: true,
+                                                              center:myCenter,
+                                                              zoom: 14,
+                                                              draggable: true,
+                                                              scrollwheel: true,
+                                                              mapTypeId:google.maps.MapTypeId.ROADMAP
+                                                          };
+                                                          map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+                                                          marker.setMap(map);
+                                                          google.maps.event.addListener(marker, 'click', function() {
+
+                                                              markerLocation();
+
+                                                          });
+                                                          google.maps.event.addListener(marker, 'dragend', function(a) {
+                                                              console.log(a);
+                                                              document.getElementById("lat").value = a.latLng.lat().toFixed(4);
+                                                              document.getElementById("lon").value=  a.latLng.lng().toFixed(4);
+                                                          });
+                                                          google.maps.event.addListener(map, 'dblclick', function(event) {
+                                                              //Get the location that the user clicked.
+                                                              var clickedLocation = event.latLng;
+                                                              //If the marker hasn't been added.
+                                                              markerLocation();
+                                                              if(marker === false){
+                                                                  //Create the marker.
+                                                                  marker = new google.maps.Marker({
+                                                                      position: clickedLocation,
+                                                                      map: map
+                                                                  });
+                                                                  //Listen for drag events!
+
+                                                              } else{
+                                                                  //Marker has already been added, so just change its location.
+
+                                                                  marker.setPosition(clickedLocation);
+
+                                                              }
+                                                              //Get the marker's location.
+
+                                                              markerLocation();
+                                                          });
+                                                      }
+
+                                                      function markerLocation(){
+                                                          //Get location.
+                                                          var currentLocation = marker.getPosition();
+                                                          //Add lat and lng values to a field that we can save.
+                                                          document.getElementById("lat").value = currentLocation.lat(); //latitude
+                                                          document.getElementById("lon").value = currentLocation.lng(); //longitude
+                                                      }
+
+                                                      function resizingMap() {
+                                                          if(typeof map =="undefined") return;
+                                                          var center = map.getCenter();
+                                                          google.maps.event.trigger(map, "resize");
+                                                          map.setCenter(center);
+
+                                                      }
+                                                  });
+                                              </script>  -->
+
+
+                     <!--
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">image name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" placeholder="" name="imageName" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                -->
+                                <input class="btn btn-success btn-lg" type="submit" value="Ajouter">
+                                <td><a  class="btn btn-default btn-lg" href="{{ path('pi_front_ajoutEvent') }}">Annuler</a></td>
+
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+    <br>
+    <h2>Creer votre publication</h2> <br><br>
+
+    {{ form_start(form) }}
+
+
+    {{ form_label(form.text) }}
+    {{ form_widget(form.text,{'attr':{'class':'span12','placeholder':'Exprimez vous ...'}}) }}
+        {{ form_widget(form) }}
+<br>
+      <a href="{{ path('publication_index') }}"></a>  <input type="submit" value="Ajouter" class="btn btn-round btn-info"  />
+    {{ form_end(form) }}
+
+
+{% endblock %}

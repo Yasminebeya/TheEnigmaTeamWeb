@@ -1,0 +1,58 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+
+    <div>
+        <class>
+            <h1 class="first-city">Contactez votre admin</h1>
+        </class>
+    </div>
+
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+
+                        {{ form_start(form) }}
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ form_widget(form.nom) }}</td>
+                        </tr>
+
+                        </thead>
+                        <tr>
+                            <th>Prenom</th>
+                            <td>{{ form_widget(form.prenom) }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ form_widget(form.email) }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Text</th>
+                            <td>{{ form_widget(form.text) }}</td>
+                        </tr>
+
+                        <tr>
+
+                            <td><button type="submit" class="btn btn-round btn-warning" value="Envoyer">Envoyer</button></td><td></td>
+                        </tr>
+
+                    </table>
+                    {{ form_end(form) }}
+
+                </div></section></div></div></div>
+    <hr>
+
+    <table>
+
+
+
+
+{% endblock %}

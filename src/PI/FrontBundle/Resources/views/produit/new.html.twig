@@ -1,0 +1,79 @@
+{% extends 'PIFrontBundle:Back:indexBack.html.twig' %}
+{% block body %}
+    {{ form_start(form) }}
+<head>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+</head>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div>
+                            <class>
+                                <h1 class="first-city">ajouter un produit</h1>
+                            </class>
+                        </div>
+
+                    </header>
+
+                    <div class="panel-body">
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.typeproduit) }} </label>
+                            <div class="col-sm-10">{{ form_widget(form.typeproduit) }}</div>
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.Libelle) }} </label>
+                            <div class="col-sm-10">{{ form_widget(form.Libelle) }}</div>
+                        </div>
+
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.prix) }} </label>
+                            <div class="col-sm-10">{{ form_widget(form.prix) }}</div>
+                        </div>
+
+
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.description) }} </label>
+
+                            <div class="col-sm-10">{{  form_widget(form.description,{'atr':{'placeholder':'Description'}}) }}</div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.quantite) }} </label>
+                            <div class="col-sm-10">{{ form_widget(form.quantite) }}</div>
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.rating) }} </label>
+                            <div class="col-sm-10">{{ form_widget(form.rating) }}</div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ form_label(form.file) }} </label>
+                            <div class="col-sm-10">{{ form_widget(form.file) }}</div>
+                        </div>
+                        <br>
+                        </br>
+                        </br>
+                        <input a href="{{ path('produit_index') }}" class="btn btn-round btn-primary pull-right" value="Ajouter" type="submit">
+
+
+                        {{ form_end(form) }}
+
+            </div>
+        </div>
+</div>
+    </form>
+
+{% endblock %}

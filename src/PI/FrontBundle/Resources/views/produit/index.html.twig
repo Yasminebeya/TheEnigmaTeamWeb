@@ -1,0 +1,52 @@
+{% extends 'PIFrontBundle:Back:indexBack.html.twig' %}
+
+{% block body %}
+    <h1>Produits list</h1>
+
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Typeproduitt</th>
+                <th>Libelle</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>Quantite</th>
+                <th>Image</th>
+                <th>Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+                <td>{{ produit.typeproduit }}</td>
+                <td>{{ produit.Libelle }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.quantite }}</td>
+                <td> <img style="width: 300px ;height: 200px" src="{{ asset("uploads/produits/" ~ produit.path) }}"> </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('produit_show', { 'id': produit.id }) }}"  class="btn btn-primary  ">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('produit_edit', { 'id': produit.id }) }}"  class="btn btn-primary ">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_new') }}"  class="btn btn-primary  ">Create a new produit</a>
+            <input type="button" class="btn-primary" value="Avoir un fichier Excel des produit" onclick="self.location='http://localhost:8080/projetpi/web/app_dev.php/exel'">
+
+
+        </li>
+    </ul>
+{% endblock %}

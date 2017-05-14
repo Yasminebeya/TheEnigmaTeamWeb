@@ -1,0 +1,54 @@
+{% extends "@PIFront/Front/index.html.twig" %}
+
+{% block body %}
+
+
+    <div id="page-contents">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-7">
+
+                    <!-- Post Create Box
+                    ================================================= -->
+                    <div class="create-post">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-7">
+                                <div class="form-group">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-5">
+                                <div class="tools">
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Post Create Box End -->
+
+                    <!-- Nearby People List
+                    ================================================= -->
+
+
+                    {% for part in participants %}
+
+
+                        <div class="nearby-user">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-2">
+                                    <img src="{{ asset('frontOffice/images/users/user-15.jpg') }}" alt="user" class="profile-photo-lg" />
+                                </div>
+                                <div class="col-md-7 col-sm-7">
+                                    <h5><a href="#" class="profile-link">{{ part.user}}  </a></h5>
+                                    <p>{{ part.idevenement.nom}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

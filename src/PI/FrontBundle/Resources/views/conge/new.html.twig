@@ -1,0 +1,83 @@
+
+    {% extends 'PIFrontBundle:Front:index.html.twig' %}
+
+
+    {% block body %}
+        {{ form_start(form) }}
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <div>
+                                <class>
+                                    <h1 class="first-city">Ajouter un congé</h1>
+                                </class>
+                            </div>
+
+                        </header>
+
+                        <div class="panel-body" class="bg-yellow">
+
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ form_label(form.datedebut) }} </label>
+                                <div class="col-sm-10 col-lg-10">{{ form_widget(form.datedebut) }}</div>
+                            </div>
+
+
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ form_label(form.nbrjours) }} </label>
+                                <div class="col-sm-10">{{ form_widget(form.nbrjours) }}</div>
+                            </div>
+
+
+
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ form_label(form.TypeConge) }} </label>
+                                <div class="col-sm-10">{{ form_widget(form.TypeConge) }}</div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{ form_label(form.raison) }} </label>
+                                <div class="col-sm-10">{{ form_widget(form.raison) }}</div>
+
+                            </div>
+                            </br>
+                            </br>
+
+
+                                    {{ form_start(form) }}
+                            <div class="form-group">
+
+                            {{ form_end(form) }}
+                                </div>
+                                    <input class="btn btn-primary " type="submit" value="Ajouter">
+
+                            <ul>
+
+                                <li>
+                                    <a href="{{ path('conge_index') }}">Afficher la liste des congés</a>
+                                </li>
+                            </ul>
+                            </div>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+        </form>
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
