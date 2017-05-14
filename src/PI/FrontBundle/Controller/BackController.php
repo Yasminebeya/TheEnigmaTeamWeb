@@ -129,7 +129,7 @@ class BackController extends Controller
             $em->flush();
             return $this->redirectToRoute('pi_back_listeEve');
         }
-        return $this->render("PIFrontBundle:Back:modifEve.html.twig", array('form' => $Form->createView(), 'e' => $eve));
+        return  $this->render("PIFrontBundle:Back:modifEve.html.twig", array('form' => $Form->createView(), 'e' => $eve));
 
     }
 
